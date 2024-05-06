@@ -212,4 +212,10 @@ app.get('/session-details/:id', (req, res) => {
 });
 
 
+app.get('/clients', (req, res) => {
+    let clients = ['Philip', 'Rahul', 'David', 'Gary', 'Sonam', 'Damini', 'Tom'];
+
+    res.json(clients);
+});
+
 app.listen(8888, () => console.log('Server listen on PORT 8888'));
