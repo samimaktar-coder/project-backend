@@ -9,10 +9,11 @@ app.use(express.json());
 let sessionDetails = [
     {
         id: "1",
-        dateAndTime: '30-Apr-2024 05:00:00',
+        date: '30-Apr-2024',
+        time: "05:00:00",
         trainer: 'Test Trainer',
         postalCode: '739675',
-        sessionTag: 'Booked',
+        sessionType: 'Yoga',
         client: 'Ravi Vishnoi',
         refId: '4241932000002553411',
         exercises: {
@@ -87,10 +88,11 @@ let sessionDetails = [
     },
     {
         id: "2",
-        dateAndTime: '5-May-2024 03:30:00',
+        date: '05-May-2024',
+        time: "03:30:00",
         trainer: 'Steve Roger',
         postalCode: '342275',
-        sessionTag: 'Booked',
+        sessionType: 'Pilates',
         client: 'Ravi Vishnoi',
         refId: '4241932000002553411',
         exercises: {
@@ -133,10 +135,11 @@ let sessionDetails = [
     },
     {
         id: "3",
-        dateAndTime: '12-May-2024 01:45:00',
+        date: '12-May-2024',
+        time: "01:45:00",
         trainer: 'Tony Stark',
         postalCode: '583733',
-        sessionTag: 'Booked',
+        sessionType: 'Warm Up',
         client: 'Ravi Vishnoi',
         refId: '4241932000002553411',
         exercises: {
@@ -173,10 +176,11 @@ let sessionDetails = [
     },
     {
         id: "4",
-        dateAndTime: '25-Jun-2024 06:20:00',
+        date: '25-Jun-2024',
+        time: "06:20:00",
         trainer: 'Clark Kent',
         postalCode: '342234',
-        sessionTag: 'Booked',
+        sessionType: 'Yoga',
         client: 'Ravi Vishnoi',
         refId: '4241932000002553411',
         exercises: {
