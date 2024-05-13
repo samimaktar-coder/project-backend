@@ -1,225 +1,71 @@
-const express = require('express');
+const epxress = require('express');
 const cors = require('cors');
 
-const app = express();
+const app = epxress();
 
-app.use(cors({ origin: '*' }));
-app.use(express.json());
+app.use(cors());
 
-let sessionDetails = [
+
+let imageList = [
     {
-        id: "1",
-        date: '30-Apr-2024',
-        time: "05:00:00",
-        trainer: 'Test Trainer',
-        postalCode: '739675',
-        sessionType: 'Yoga',
-        client: 'Ravi Vishnoi',
-        refId: '4241932000002553411',
-        exercises: {
-            warmUp: [
-                {
-                    exercise: "Ankle mobilization",
-                    sets: 3,
-                    reps: 4,
-                    weights: 67
-                },
-                {
-                    exercise: "Back lunge with knee to chest",
-                    sets: 2,
-                    reps: 6,
-                    weights: 57
-                },
-                {
-                    exercise: "Barbell walking lunge",
-                    sets: 1,
-                    reps: 5,
-                    weights: 65
-                }
-            ],
-            mainWorkout: [
-                {
-                    exercise: "Archer push-up",
-                    sets: 3,
-                    reps: 4,
-                    weights: 67
-                },
-                {
-                    exercise: "Bodyweight Skull Crusher",
-                    sets: 2,
-                    reps: 6,
-                    weights: 57
-                },
-                {
-                    exercise: "Cable crunch",
-                    sets: 1,
-                    reps: 5,
-                    weights: 65
-                },
-                {
-                    exercise: "Calf Raises",
-                    sets: 1,
-                    reps: 5,
-                    weights: 65
-                },
-                {
-                    exercise: "Crab walk",
-                    sets: 1,
-                    reps: 5,
-                    weights: 65
-                }
-            ],
-            finisher: [
-                {
-                    exercise: "Banded Pull down",
-                    sets: 5,
-                    reps: 2,
-                    weights: 60
-                },
-                {
-                    exercise: "High Knees",
-                    sets: 3,
-                    reps: 1,
-                    weights: 63
-                }
-            ]
-        }
-
+        url: 'https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dg',
+        title: 'Charles gaudreult image',
+        date: '15/02/2024'
     },
     {
-        id: "2",
-        date: '05-May-2024',
-        time: "03:30:00",
-        trainer: 'Steve Roger',
-        postalCode: '342275',
-        sessionType: 'Pilates',
-        client: 'Ravi Vishnoi',
-        refId: '4241932000002553411',
-        exercises: {
-            warmUp: [
-                {
-                    exercise: "Jumping Jacks",
-                    sets: 3,
-                    reps: 15,
-                    weights: 10
-                }
-            ],
-            mainWorkout: [
-                {
-                    exercise: "Push-ups",
-                    sets: 4,
-                    reps: 10,
-                    weights: 20
-                },
-                {
-                    exercise: "Squats",
-                    sets: 3,
-                    reps: 12,
-                    weights: 30
-                },
-                {
-                    exercise: "Plank",
-                    sets: 2,
-                    reps: 45,
-                    weights: 0
-                },
-                {
-                    exercise: "Russian Twists",
-                    sets: 2,
-                    reps: 20,
-                    weights: 8
-                }
-            ],
-            finisher: []
-        }
+        url: 'https://images.unsplash.com/photo-1545346315-f4c47e3e1b55?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Walter lee image',
+        date: '09/11/2023'
     },
     {
-        id: "3",
-        date: '12-May-2024',
-        time: "01:45:00",
-        trainer: 'Tony Stark',
-        postalCode: '583733',
-        sessionType: 'Warm Up',
-        client: 'Ravi Vishnoi',
-        refId: '4241932000002553411',
-        exercises: {
-            warmUp: [],
-            mainWorkout: [
-                {
-                    exercise: "Pull-ups",
-                    sets: 3,
-                    reps: 6,
-                    weights: 0
-                },
-                {
-                    exercise: "Plank",
-                    sets: 2,
-                    reps: 60,
-                    weights: 0
-                },
-                {
-                    exercise: "Bicep Curls",
-                    sets: 3,
-                    reps: 12,
-                    weights: 15
-                }
-            ],
-            finisher: [
-                {
-                    exercise: "Jump Rope",
-                    sets: 3,
-                    reps: 50,
-                    weights: 0
-                }
-            ]
-        }
+        url: 'https://images.unsplash.com/photo-1604480133435-25b86862d276?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Tony Stark image',
+        date: '15/01/2024'
     },
     {
-        id: "4",
-        date: '25-Jun-2024',
-        time: "06:20:00",
-        trainer: 'Clark Kent',
-        postalCode: '342234',
-        sessionType: 'Yoga',
-        client: 'Ravi Vishnoi',
-        refId: '4241932000002553411',
-        exercises: {
-            warmUp: [],
-            mainWorkout: [
-                {
-                    exercise: "Squats",
-                    sets: 4,
-                    reps: 8,
-                    weights: 40
-                },
-                {
-                    exercise: "Plank",
-                    sets: 2,
-                    reps: 60,
-                    weights: 0
-                }
-            ],
-            finisher: []
-        }
+        url: 'https://images.unsplash.com/photo-1609899517237-77d357b047cf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Kevin Peterson image',
+        date: '15/01/2024'
+    },
+    {
+        url: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Michael image',
+        date: '15/02/2024'
+    },
+    {
+        url: 'https://images.unsplash.com/flagged/photo-1576579206905-df3aa87352b6?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Walter lee image',
+        date: '09/11/2023'
+    },
+    {
+        url: 'https://images.unsplash.com/photo-1606335543586-137481155deb?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Tony Stark image',
+        date: '15/01/2024'
+    },
+    {
+        url: 'https://images.unsplash.com/photo-1517438984742-1262db08379e?q=80&w=1960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Oto Winkler image',
+        date: '27/12/2023'
+    },
+    {
+        url: 'https://images.unsplash.com/photo-1617085606353-75ba20310b8c?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Mark Adriane image',
+        date: '03/01/2024'
+    },
+    {
+        url: 'https://plus.unsplash.com/premium_photo-1672046218033-2b624d63390f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Jakob Owens image',
+        date: '17/03/2024'
+    },
+    {
+        url: 'https://images.unsplash.com/photo-1634788699029-b26c89ed32b4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Rahul Sinha image',
+        date: '15/01/2024'
     },
 ];
 
-
-app.get('/sessions', (req, res) => {
-    res.json(sessionDetails);
-});
-
-app.get('/session-details/:id', (req, res) => {
-    let id = req.params.id;
-    let session = sessionDetails.filter(session => session.id === id);
-    res.json(session[0]);
-});
-
-
-app.get('/clients', (req, res) => {
-    let clients = ['Philip', 'Rahul', 'David', 'Gary', 'Sonam', 'Damini', 'Tom'];
-
-    res.json(clients);
+app.get('/images', (req, res) => {
+    res.json(imageList);
 });
 
 app.listen(8888, () => console.log('Server listen on PORT 8888'));
